@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import control.KendaraanControl;
 import exception.InputIdException;
+import exception.InputKosongException;
 import exception.JenisKendaraanException;
 import javax.swing.JOptionPane;
 import model.Kendaraan;
@@ -24,29 +25,32 @@ public class KendaraanView extends javax.swing.JFrame {
         initComponents();
         setComponent(false);
         setEditDeleteBtn(false);
+        radioInput(false);
         kendaraanControl = new KendaraanControl();
-        
+        showKendaraan();
     }
-    
+    public void radioInput(boolean  value){
+        inputJumlah.setEnabled(value);
+        inputJenis.setEnabled(value);
+    }
     public void showKendaraan(){
-        if()
-        showDataTextArea.setText(dosenControl.showDataDosen());
+        areaMobil.setText(kendaraanControl.showDataMobil());
+        areaMotor.setText(kendaraanControl.showDataMotor());
     }
     
     public void setComponent(boolean value){
         inputID.setEnabled(value);
-        inputNama.setEnabled(value);
+        inputMerk.setEnabled(value);
         inputTahun.setEnabled(value);
         inputNo.setEnabled(value);
         
-        inputJumlah.setEnabled(value);
-        inputJenis.setEnabled(value);
+        
         
         btnSave.setEnabled(value);
         btnCancel.setEnabled(value);
         
-        jenisDosen.setEnabled(value);
-        jenisStaff.setEnabled(value);
+        jenisMobil.setEnabled(value);
+        jenisMotor.setEnabled(value);
         
     }
     
@@ -57,17 +61,16 @@ public class KendaraanView extends javax.swing.JFrame {
     
     public void clearText(){
         inputID.setText("");
-        inputNama.setText("");
+        inputMerk.setText("");
         inputTahun.setText("");
         inputNo.setText("");
+        inputSearch.setText("");
         
         inputJumlah.setText("");
         inputJenis.setText("");
         
         jenisGroup.clearSelection();
     }
-    
-    
     //Exception belum dibuat
 
     /**
@@ -95,15 +98,15 @@ public class KendaraanView extends javax.swing.JFrame {
         panelInput = new javax.swing.JPanel();
         labelID = new javax.swing.JLabel();
         inputID = new javax.swing.JTextField();
-        labelNama = new javax.swing.JLabel();
-        inputNama = new javax.swing.JTextField();
+        labelMerk = new javax.swing.JLabel();
+        inputMerk = new javax.swing.JTextField();
         labelTahun = new javax.swing.JLabel();
         inputTahun = new javax.swing.JTextField();
         labelNo = new javax.swing.JLabel();
         inputNo = new javax.swing.JTextField();
         panelJenis = new javax.swing.JPanel();
-        jenisDosen = new javax.swing.JRadioButton();
-        jenisStaff = new javax.swing.JRadioButton();
+        jenisMobil = new javax.swing.JRadioButton();
+        jenisMotor = new javax.swing.JRadioButton();
         labelJumlah = new javax.swing.JLabel();
         inputJumlah = new javax.swing.JTextField();
         labelJenis = new javax.swing.JLabel();
@@ -237,17 +240,27 @@ public class KendaraanView extends javax.swing.JFrame {
             }
         });
 
-        labelNama.setForeground(new java.awt.Color(255, 255, 255));
-        labelNama.setText("Nama Kendaraan");
+        labelMerk.setForeground(new java.awt.Color(255, 255, 255));
+        labelMerk.setText("Merk Kendaraan");
 
-        inputNama.setBackground(new java.awt.Color(80, 80, 96));
-        inputNama.setForeground(new java.awt.Color(255, 255, 255));
+        inputMerk.setBackground(new java.awt.Color(80, 80, 96));
+        inputMerk.setForeground(new java.awt.Color(255, 255, 255));
+        inputMerk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMerkActionPerformed(evt);
+            }
+        });
 
         labelTahun.setForeground(new java.awt.Color(255, 255, 255));
         labelTahun.setText("Tahun Pembuatan");
 
         inputTahun.setBackground(new java.awt.Color(80, 80, 96));
         inputTahun.setForeground(new java.awt.Color(255, 255, 255));
+        inputTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTahunActionPerformed(evt);
+            }
+        });
 
         labelNo.setForeground(new java.awt.Color(255, 255, 255));
         labelNo.setText("Nomor Plat");
@@ -271,11 +284,11 @@ public class KendaraanView extends javax.swing.JFrame {
                         .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(50, Short.MAX_VALUE))
                     .addComponent(inputID)
-                    .addComponent(inputNama)
+                    .addComponent(inputMerk)
                     .addComponent(inputTahun)
                     .addComponent(inputNo)))
         );
@@ -287,9 +300,9 @@ public class KendaraanView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(labelNama)
+                .addComponent(labelMerk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(labelTahun)
                 .addGap(10, 10, 10)
@@ -306,21 +319,21 @@ public class KendaraanView extends javax.swing.JFrame {
         panelJenis.setBackground(new java.awt.Color(80, 80, 92));
         panelJenis.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        jenisGroup.add(jenisDosen);
-        jenisDosen.setForeground(new java.awt.Color(255, 255, 255));
-        jenisDosen.setText("Mobil");
-        jenisDosen.addActionListener(new java.awt.event.ActionListener() {
+        jenisGroup.add(jenisMobil);
+        jenisMobil.setForeground(new java.awt.Color(255, 255, 255));
+        jenisMobil.setText("Mobil");
+        jenisMobil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenisDosenActionPerformed(evt);
+                jenisMobilActionPerformed(evt);
             }
         });
 
-        jenisGroup.add(jenisStaff);
-        jenisStaff.setForeground(new java.awt.Color(255, 255, 255));
-        jenisStaff.setText("Motor");
-        jenisStaff.addActionListener(new java.awt.event.ActionListener() {
+        jenisGroup.add(jenisMotor);
+        jenisMotor.setForeground(new java.awt.Color(255, 255, 255));
+        jenisMotor.setText("Motor");
+        jenisMotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenisStaffActionPerformed(evt);
+                jenisMotorActionPerformed(evt);
             }
         });
 
@@ -355,8 +368,8 @@ public class KendaraanView extends javax.swing.JFrame {
                 .addGroup(panelJenisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJenisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(panelJenisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jenisDosen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jenisStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jenisMobil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jenisMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(inputJumlah)
                         .addComponent(labelJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(inputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -367,13 +380,13 @@ public class KendaraanView extends javax.swing.JFrame {
             panelJenisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJenisLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jenisDosen)
+                .addComponent(jenisMobil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelJumlah)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jenisStaff)
+                .addComponent(jenisMotor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelJenis)
                 .addGap(8, 8, 8)
@@ -381,8 +394,8 @@ public class KendaraanView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jenisDosen.getAccessibleContext().setAccessibleName("");
-        jenisStaff.getAccessibleContext().setAccessibleName("");
+        jenisMobil.getAccessibleContext().setAccessibleName("");
+        jenisMotor.getAccessibleContext().setAccessibleName("");
 
         panelSaveCancel.setBackground(new java.awt.Color(80, 80, 92));
 
@@ -599,8 +612,12 @@ public class KendaraanView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        btnSearch.setEnabled(false);
+        inputSearch.setEnabled(false);
         setComponent(true);
+        setEditDeleteBtn(false);
         clearText();
+        radioInput(false);
         action = "Add";
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -619,52 +636,89 @@ public class KendaraanView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         setEditDeleteBtn(true);
         setComponent(false);
-        
+        radioInput(false);
        try {
-            //Dosen dosen = dosenControl.searchDosen(inputSearch.getText());
-            if(!true){
+           Kendaraan kendaraan = kendaraanControl.searchKendaraan(inputSearch.getText());
+            if(kendaraan == null){
                 clearText();
                 setEditDeleteBtn(false);
                 JOptionPane.showConfirmDialog(null, "Data tidak ditemukan","Konfirmasi", JOptionPane.DEFAULT_OPTION);
             }else{
-                inputID.setText("ID-Motor");
-                inputNama.setText("Ini Nama Motor");
-                inputTahun.setText("2023");
-                inputNo.setText("08123456789");
+                inputID.setText(kendaraan.getId());
+                inputMerk.setText(kendaraan.getMerk());
+                inputTahun.setText(String.valueOf(kendaraan.getTahunPembuatan()));
+                inputNo.setText(kendaraan.getNoPlat());
                 
-                inputJumlah.setText("10");
-                inputJenis.setText("2 Tak");
-                jenisDosen.setSelected(true);
+                if (kendaraan.getJenis().equals("Motor")) {
+                    inputJenis.setText(kendaraan.getJenis_tak());
+                    jenisMotor.setSelected(true);
+                    inputJumlah.setText("");
+                }else{
+                    inputJumlah.setText(String.valueOf(kendaraan.getJumlah_penumpang()));
+                    jenisMobil.setSelected(true);
+                    inputJenis.setText("");
+                }
             }
         } catch (Exception e) {
             System.out.println("Error "+e.getMessage());
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
+       public void inputIdException() throws InputIdException{
+           if(inputID.getText().length()<5 || inputID.getText().length()>8) throw new InputIdException();
+       }
+       public void jenisKendaraanException() throws JenisKendaraanException{
+           if(!jenisMotor.isSelected() && !jenisMobil.isSelected()) throw new JenisKendaraanException();
+       }
+       public void inputKosongException() throws InputKosongException{
+           if(inputMerk.getText().length()==0 || inputJenis.getText().length()==0 || inputJumlah.getText().length()==0
+                   || inputNo.getText().length()==0 || inputSearch.getText().length()==0 || inputTahun.getText().length()==0){
+               throw new InputKosongException();
+           }
+       }
     private void inputNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNoActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         setComponent(false);
+        inputSearch.setEnabled(true);
+        btnSearch.setEnabled(true);
         setEditDeleteBtn(false);
         clearText();
+        radioInput(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
        setComponent(true);
        inputID.setEnabled(false);
+       if (jenisMotor.isSelected()) {
+           jenisMotor.setEnabled(false);
+           inputJenis.setEnabled(true);
+            jenisMobil.setEnabled(false);
+            inputJumlah.setEnabled(false);
+        }else{
+           jenisMobil.setSelected(false);
+           inputJumlah.setEnabled(true);
+            jenisMotor.setEnabled(false);
+            inputJenis.setEnabled(false);
+        }
         action = "Edit";
+        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
        int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin ingin menghapus data?","Konfirmasi", JOptionPane.YES_NO_OPTION);
        if(getAnswer == JOptionPane.YES_OPTION){
             try {
-                //dosenControl.deleteDataDosen(nidInput.getText());
-                clearText();
-                //showDosen();
+                 kendaraanControl.deleteDataKendaraan(inputID.getText());
+                  clearText();
+                  showKendaraan();
                 JOptionPane.showMessageDialog(null, "Data Berhasil dihapus!");
+                setEditDeleteBtn(false);
+                clearText();
+                setComponent(false);
+                radioInput(false);
             } catch (Exception e) {
                 System.out.println("Error : "+e.getMessage());
             }
@@ -672,51 +726,82 @@ public class KendaraanView extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Data tidak jadi dihapus!");
         }
-        setEditDeleteBtn(false);
-        clearText();
+       
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void inputSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSearchActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputSearchActionPerformed
 
-    private void jenisDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisDosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jenisDosenActionPerformed
+    private void jenisMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMobilActionPerformed
+        inputJumlah.setEnabled(true);
+        inputJenis.setEnabled(false);
+        inputJenis.setText("");
+    }//GEN-LAST:event_jenisMobilActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
        try{
-//                inputKosongException();
-//                noIndukDosenException();
-//                tooManyInputException();
-    
-//                Dosen d = new Dosen(nidInput.getText(), namaInput.getText(),
-//                      emailInput.getText(), handphoneInput.getText());
+           inputIdException();
+           jenisKendaraanException();
+           inputKosongException();
+           Kendaraan k=null;
+
+                if(jenisMobil.isSelected()){
+                     k = new Kendaraan(inputID.getText(), inputMerk.getText(),"Mobil",
+                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),Integer.parseInt(inputJumlah.getText()),null);
+                }else{
+                     k=new Kendaraan(inputID.getText(), inputMerk.getText(),"Motor",
+                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),0,inputJenis.getText());
+                }
+                
                 if(action.equals("Add")){
-//                    dosenControl.insertDataDosen(d);
+                    kendaraanControl.insertDataKendaraan(k);
                         JOptionPane.showMessageDialog(this, "Berhasil Tambah Data");
                 }else{
-//                    dosenControl.updateDataDosen(d, nidInput.getText());
+                    kendaraanControl.updateDataKendaraan(k,inputID.getText());
                         JOptionPane.showMessageDialog(this, "Berhasil Edit Data");
                 }
                 clearText();
                 setComponent(false);
                 setEditDeleteBtn(false);
-//                showDosen();
-//            }catch(InputKosongException e){
-//                JOptionPane.showMessageDialog(this, e.message());
-//            }catch(NoIndukDosenException e){
-//                JOptionPane.showMessageDialog(this, e.message());
-//            }catch(TooManyInputException e){
-//                JOptionPane.showMessageDialog(this, e.message());
+                radioInput(false);
+                showKendaraan();
+            }catch(InputKosongException e){
+                JOptionPane.showMessageDialog(this, e.message());
+            }catch(InputIdException e){
+                JOptionPane.showMessageDialog(this, e.message());
+            }catch(JenisKendaraanException e){
+                JOptionPane.showMessageDialog(this, e.message());
+            }catch(NumberFormatException e){
+                    try{
+                        Integer.parseInt(inputTahun.getText());
+                    }catch(NumberFormatException e1){
+                        JOptionPane.showMessageDialog(this, "Tahun Pembuatan harus berupa Angka");
+                    }
+
+                    try{
+                        Integer.parseInt(inputJumlah.getText());
+                    }catch(NumberFormatException e2){
+                        JOptionPane.showMessageDialog(this, "Jumlah Penumpang harus berupa Angka");
+                    }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(this, e.toString());
             }
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void jenisStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisStaffActionPerformed
+    private void jenisMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMotorActionPerformed
+       inputJumlah.setEnabled(false);
+        inputJenis.setEnabled(true);
+        inputJumlah.setText("");
+    }//GEN-LAST:event_jenisMotorActionPerformed
+
+    private void inputMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMerkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jenisStaffActionPerformed
+    }//GEN-LAST:event_inputMerkActionPerformed
+
+    private void inputTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTahunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTahunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -766,22 +851,22 @@ public class KendaraanView extends javax.swing.JFrame {
     private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputJenis;
     private javax.swing.JTextField inputJumlah;
-    private javax.swing.JTextField inputNama;
+    private javax.swing.JTextField inputMerk;
     private javax.swing.JTextField inputNo;
     private javax.swing.JTextField inputSearch;
     private javax.swing.JTextField inputTahun;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JRadioButton jenisDosen;
     private javax.swing.ButtonGroup jenisGroup;
-    private javax.swing.JRadioButton jenisStaff;
+    private javax.swing.JRadioButton jenisMobil;
+    private javax.swing.JRadioButton jenisMotor;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelJenis;
     private javax.swing.JLabel labelJumlah;
     private javax.swing.JLabel labelKelompok;
+    private javax.swing.JLabel labelMerk;
     private javax.swing.JLabel labelMobil;
     private javax.swing.JLabel labelMotor;
-    private javax.swing.JLabel labelNama;
     private javax.swing.JLabel labelNo;
     private javax.swing.JLabel labelOP1;
     private javax.swing.JLabel labelRental;

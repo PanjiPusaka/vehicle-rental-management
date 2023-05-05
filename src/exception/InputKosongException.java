@@ -10,8 +10,8 @@ package exception;
  * Made Riksi Purnama Sadnya Agung / 210711396
  * Pemrograman Berorientasi Obyek C
  */
-public class JenisKendaraanException extends Exception{
+public class InputKosongException extends Exception{
     public String message(){
-        return "Kendaraan Harus Mobil atau Motor";
+        return "Inputan Tidak Boleh Kosong";
     }
 }
