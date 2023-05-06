@@ -612,8 +612,6 @@ public class KendaraanView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        btnSearch.setEnabled(false);
-        inputSearch.setEnabled(false);
         setComponent(true);
         setEditDeleteBtn(false);
         clearText();
@@ -671,10 +669,17 @@ public class KendaraanView extends javax.swing.JFrame {
            if(!jenisMotor.isSelected() && !jenisMobil.isSelected()) throw new JenisKendaraanException();
        }
        public void inputKosongException() throws InputKosongException{
-           if(inputMerk.getText().length()==0 || inputJenis.getText().length()==0 || inputJumlah.getText().length()==0
-                   || inputNo.getText().length()==0 || inputSearch.getText().length()==0 || inputTahun.getText().length()==0){
-               throw new InputKosongException();
+           if(inputID.getText().length()==0 || inputMerk.getText().length()==0 
+               || inputTahun.getText().length()==0 || inputNo.getText().length()==0){
+                    throw new InputKosongException();
            }
+       }
+       public void inputKosongJenisKendaranException() throws InputKosongException{
+           if(jenisMobil.isSelected() &&  inputJumlah.getText().length()==0){
+                   throw new InputKosongException();
+               }else if(jenisMotor.isSelected() && inputJenis.getText().length()==0){
+                   throw new InputKosongException();
+               }
        }
     private void inputNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNoActionPerformed
         // TODO add your handling code here:
@@ -741,9 +746,11 @@ public class KendaraanView extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
        try{
+           inputKosongException();
            inputIdException();
            jenisKendaraanException();
-           inputKosongException();
+           inputKosongJenisKendaranException();
+          
            Kendaraan k=null;
 
                 if(jenisMobil.isSelected()){
@@ -778,12 +785,14 @@ public class KendaraanView extends javax.swing.JFrame {
                     }catch(NumberFormatException e1){
                         JOptionPane.showMessageDialog(this, "Tahun Pembuatan harus berupa Angka");
                     }
-
-                    try{
-                        Integer.parseInt(inputJumlah.getText());
-                    }catch(NumberFormatException e2){
-                        JOptionPane.showMessageDialog(this, "Jumlah Penumpang harus berupa Angka");
+                    if(jenisMobil.isSelected()){
+                        try{
+                            Integer.parseInt(inputJumlah.getText());
+                        }catch(NumberFormatException e2){
+                            JOptionPane.showMessageDialog(this, "Jumlah Penumpang harus berupa Angka");
+                        }
                     }
+                    
             }catch(Exception e){
                 JOptionPane.showMessageDialog(this, e.toString());
             }
