@@ -20,6 +20,8 @@ import model.Kendaraan;
 public class KendaraanView extends javax.swing.JFrame {
     private KendaraanControl kendaraanControl;
     String action=null;
+    int initCountMobil = 0;
+    int initCountMotor = 0;
     
     public KendaraanView() {
         initComponents();
@@ -28,6 +30,10 @@ public class KendaraanView extends javax.swing.JFrame {
         radioInput(false);
         kendaraanControl = new KendaraanControl();
         showKendaraan();
+        initCountMobil = kendaraanControl.countKendaraan("Mobil");
+        initCountMotor = kendaraanControl.countKendaraan("Motor");
+        System.out.println(initCountMobil);
+        System.out.println(initCountMotor);
     }
     public void radioInput(boolean  value){
         inputJumlah.setEnabled(value);
@@ -71,8 +77,6 @@ public class KendaraanView extends javax.swing.JFrame {
         
         jenisGroup.clearSelection();
     }
-    //Exception belum dibuat
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -614,6 +618,7 @@ public class KendaraanView extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         setComponent(true);
         setEditDeleteBtn(false);
+        inputID.setEnabled(false);
         clearText();
         radioInput(false);
         action = "Add";
@@ -742,6 +747,9 @@ public class KendaraanView extends javax.swing.JFrame {
         inputJumlah.setEnabled(true);
         inputJenis.setEnabled(false);
         inputJenis.setText("");
+        if (action.equals("Add")) {
+            inputID.setText("MBL-"+String.valueOf(initCountMobil+1));
+        }
     }//GEN-LAST:event_jenisMobilActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -756,17 +764,19 @@ public class KendaraanView extends javax.swing.JFrame {
                 if(jenisMobil.isSelected()){
                      k = new Kendaraan(inputID.getText(), inputMerk.getText(),"Mobil",
                     Integer.parseInt(inputTahun.getText()),inputNo.getText(),Integer.parseInt(inputJumlah.getText()),null);
+                     initCountMobil++;
                 }else{
                      k=new Kendaraan(inputID.getText(), inputMerk.getText(),"Motor",
                     Integer.parseInt(inputTahun.getText()),inputNo.getText(),0,inputJenis.getText());
+                     initCountMotor++;
                 }
                 
                 if(action.equals("Add")){
                     kendaraanControl.insertDataKendaraan(k);
-                        JOptionPane.showMessageDialog(this, "Berhasil Tambah Data");
+                    JOptionPane.showMessageDialog(this, "Berhasil Tambah Data");
                 }else{
                     kendaraanControl.updateDataKendaraan(k,inputID.getText());
-                        JOptionPane.showMessageDialog(this, "Berhasil Edit Data");
+                    JOptionPane.showMessageDialog(this, "Berhasil Edit Data");
                 }
                 clearText();
                 setComponent(false);
@@ -799,9 +809,12 @@ public class KendaraanView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jenisMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMotorActionPerformed
-       inputJumlah.setEnabled(false);
         inputJenis.setEnabled(true);
+        inputJumlah.setEnabled(false);
         inputJumlah.setText("");
+        if (action.equals("Add")) {
+            inputID.setText("MTR-"+String.valueOf(initCountMotor+1));
+        }
     }//GEN-LAST:event_jenisMotorActionPerformed
 
     private void inputMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMerkActionPerformed

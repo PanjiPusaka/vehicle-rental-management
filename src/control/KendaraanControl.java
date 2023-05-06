@@ -35,6 +35,20 @@ public class KendaraanControl {
          }
         return motorString;
     }
+    
+    public int countKendaraan(String jenis){
+        List<Kendaraan> dataKendaraan = kDao.showKendaraan();
+        int count = 0;
+        for (int i=0; i < dataKendaraan.size(); i++) {
+            if(dataKendaraan.get(i).getId().contains("MBL-") && dataKendaraan.get(i).getJenis().equals(jenis)){
+                count++;
+            }else if(dataKendaraan.get(i).getId().contains("MTR-") && dataKendaraan.get(i).getJenis().equals(jenis)){
+                count++;
+            }
+         }
+        return count;
+    }
+    
  public Kendaraan  searchKendaraan(String id){
        Kendaraan k=null;
        k = kDao.searchKendaraan(id);

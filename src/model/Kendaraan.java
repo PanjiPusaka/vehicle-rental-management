@@ -54,7 +54,7 @@ public class Kendaraan {
     public String getJenis_tak() {
         return jenis_tak;
     }
-    
+
     public String showDataKendaraan(){
         if (jenis.equalsIgnoreCase("Mobil")) {
             return "ID : "+id+"\nMerk : "+merk+"\nTahun : "+tahunPembuatan+
