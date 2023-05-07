@@ -4,6 +4,14 @@
  */
 package view;
 
+/**
+ * Nama : Made Riksi Purnama Sadnya Agung
+ * NPM  : 210711396
+ * 
+ * Nama : I Made Panji Pusaka Suryeswara
+ * NPM  : 210711397
+ */
+
 import javax.swing.ButtonGroup;
 
 import javax.swing.JOptionPane;
@@ -32,8 +40,6 @@ public class KendaraanView extends javax.swing.JFrame {
         showKendaraan();
         initCountMobil = kendaraanControl.countKendaraan("Mobil");
         initCountMotor = kendaraanControl.countKendaraan("Motor");
-        System.out.println(initCountMobil);
-        System.out.println(initCountMotor);
     }
     public void radioInput(boolean  value){
         inputJumlah.setEnabled(value);

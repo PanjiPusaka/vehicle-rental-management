@@ -6,9 +6,11 @@
 package exception;
 
 /**
- * @author 
- * Made Riksi Purnama Sadnya Agung / 210711396
- * Pemrograman Berorientasi Obyek C
+ * Nama : Made Riksi Purnama Sadnya Agung
+ * NPM  : 210711396
+ * 
+ * Nama : I Made Panji Pusaka Suryeswara
+ * NPM  : 210711397
  */
 public class JenisKendaraanException extends Exception{
     public String message(){

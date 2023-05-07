@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+/**
+ * Nama : Made Riksi Purnama Sadnya Agung
+ * NPM  : 210711396
+ * 
+ * Nama : I Made Panji Pusaka Suryeswara
+ * NPM  : 210711397
+ */
+
 package control;
 import dao.KendaraanDAO;
 import java.util.List;
@@ -41,9 +49,9 @@ public class KendaraanControl {
         int count = 0;
         for (int i=0; i < dataKendaraan.size(); i++) {
             if(dataKendaraan.get(i).getId().contains("MBL-") && dataKendaraan.get(i).getJenis().equals(jenis)){
-                count++;
+                count = Integer.parseInt(String.valueOf(dataKendaraan.get(i).getId().charAt(4)));
             }else if(dataKendaraan.get(i).getId().contains("MTR-") && dataKendaraan.get(i).getJenis().equals(jenis)){
-                count++;
+                count = Integer.parseInt(String.valueOf(dataKendaraan.get(i).getId().charAt(4)));
             }
          }
         return count;

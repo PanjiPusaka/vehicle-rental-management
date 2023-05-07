@@ -3,12 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
-/**
- * @author 
- * Made Riksi Purnama Sadnya Agung / 210711396
- * Pemrograman Berorientasi Obyek C
- */
 package dao;
 /**
  * Nama : Made Riksi Purnama Sadnya Agung
