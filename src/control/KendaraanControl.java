@@ -47,11 +47,18 @@ public class KendaraanControl {
     public int countKendaraan(String jenis){
         List<Kendaraan> dataKendaraan = kDao.showKendaraan();
         int count = 0;
+        int length = 0;
         for (int i=0; i < dataKendaraan.size(); i++) {
             if(dataKendaraan.get(i).getId().contains("MBL-") && dataKendaraan.get(i).getJenis().equals(jenis)){
-                count = Integer.parseInt(String.valueOf(dataKendaraan.get(i).getId().charAt(4)));
+                if (dataKendaraan.get(i).getId().length() >= length) {
+                    length = dataKendaraan.get(i).getId().length();
+                    count = Integer.parseInt(dataKendaraan.get(i).getId().substring(4));
+                }
             }else if(dataKendaraan.get(i).getId().contains("MTR-") && dataKendaraan.get(i).getJenis().equals(jenis)){
-                count = Integer.parseInt(String.valueOf(dataKendaraan.get(i).getId().charAt(4)));
+                if (dataKendaraan.get(i).getId().length() >= length) {
+                    length = dataKendaraan.get(i).getId().length();
+                    count = Integer.parseInt(dataKendaraan.get(i).getId().substring(4));
+                }
             }
          }
         return count;

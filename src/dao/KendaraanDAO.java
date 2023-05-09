@@ -46,7 +46,7 @@ public class KendaraanDAO {
     public List<Kendaraan> showKendaraan(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM kendaraan ORDER BY id";
+        String sql = "SELECT * FROM kendaraan ORDER BY CHAR_LENGTH(id)";
         System.out.println("Collecting data kendaraan..");
         
         List<Kendaraan> list = new ArrayList<>();
