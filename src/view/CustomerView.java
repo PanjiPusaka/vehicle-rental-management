@@ -10,6 +10,7 @@ import control.CustomerControl;
 import exception.InputKosongException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
+import table.TableCustomer;
 
 import model.Customer;
 
@@ -119,8 +120,18 @@ public class CustomerView extends javax.swing.JFrame {
         });
 
         btnDelete.setText("Hapus");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnSearch.setText("Cari");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelButtonLayout = new javax.swing.GroupLayout(panelButton);
         panelButton.setLayout(panelButtonLayout);
@@ -193,6 +204,11 @@ public class CustomerView extends javax.swing.JFrame {
         );
 
         btnCancel.setText("Batal");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Simpan");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -335,6 +351,48 @@ public class CustomerView extends javax.swing.JFrame {
         setComponent(true);
         clearText();
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        setComponent(false);
+        setEditDelete(false);
+        
+        try {
+            TableCustomer customer = customerControl.showCustomerBySearch(searchInput.getText());
+            if (customer.getRowCount() == 0) {
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                tableCustomer.setModel(customer);
+            }
+            clearText();
+        } catch (Exception e) {
+            System.out.println("Eror : "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+
+        if (getAnswer == JOptionPane.YES_OPTION) {
+            try {
+                customerControl.deleteCustomer(selectedId);
+                clearText();
+                showCustomer();
+                setComponent(false);
+                setEditDelete(false);
+                JOptionPane.showMessageDialog(null, "Data berhasil dihapus ! ");
+            } catch (Exception e) {
+                System.out.println("Eror : "+e.getMessage());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Batal menghapus data dosen ! ");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        setComponent(false);
+        setEditDelete(false);
+        clearText();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
