@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package control;
 
+import dao.KendaraanDAO;
+import java.util.List;
+import model.Kendaraan;
 /**
  * Nama : Made Riksi Purnama Sadnya Agung
  * NPM  : 210711396
@@ -10,12 +10,6 @@
  * Nama : I Made Panji Pusaka Suryeswara
  * NPM  : 210711397
  */
-
-package control;
-import dao.KendaraanDAO;
-import java.util.List;
-import model.Kendaraan;
-
 public class KendaraanControl {
     private KendaraanDAO kDao = new KendaraanDAO();
     
@@ -77,5 +71,9 @@ public class KendaraanControl {
    public void deleteDataKendaraan(String id){
        kDao.deleteKendaraan(id);
    }
-
+   
+   public List<Kendaraan> showAllKendaraan(){
+        List<Kendaraan> dataKendaraan = kDao.showKendaraan();
+        return dataKendaraan;
+    }
 }

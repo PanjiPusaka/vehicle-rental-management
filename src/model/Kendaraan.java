@@ -54,6 +54,11 @@ public class Kendaraan {
     public String getJenis_tak() {
         return jenis_tak;
     }
+    
+    @Override
+    public String toString(){
+        return merk;
+    }
 
     public String showDataKendaraan(){
         if (jenis.equalsIgnoreCase("Mobil")) {
