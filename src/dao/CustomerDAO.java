@@ -42,7 +42,7 @@ public class CustomerDAO {
     public List<Customer> showCustomerBySearch(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM customer WHERE (id='"+query+"'"
+        String sql = "SELECT * FROM customer WHERE (id = '"+query+"' "
                 + " OR nama LIKE '%"+query+"%' OR ktp LIKE '%"+query+"%'"
                 + " OR no_telepon LIKE '%"+query+"%')";
         
@@ -95,7 +95,7 @@ public class CustomerDAO {
     public void deleteCustomer(int id){
         con = dbcon.makeConnection();
         
-        String sql = "DELETE * FROM customer WHERE id = "+id+"";
+        String sql = "DELETE FROM customer WHERE id = "+id+"";
         
         System.out.println("Deleting data customer...");
         
