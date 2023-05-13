@@ -15,7 +15,7 @@ public class CustomerControl {
     private CustomerDAO cDao = new CustomerDAO();
     
     public void insertCustomer(Customer c){
-        cDao.updateCustomer(c);
+        cDao.insertCustomer(c);
     }
     
     public void deleteCustomer(int id){
@@ -26,10 +26,10 @@ public class CustomerControl {
         cDao.updateCustomer(c);
     }
     
-    public List<Customer> showCustomerBySearch(String query){
+    public TableCustomer showCustomerBySearch(String query){
         List<Customer> list = cDao.showCustomerBySearch(query);
         TableCustomer tableCustomer =  new TableCustomer(list);
         
-        return list;
+        return tableCustomer;
     }
 }

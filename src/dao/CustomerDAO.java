@@ -22,7 +22,7 @@ public class CustomerDAO {
     public void insertCustomer(Customer c){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTRO customer(nama, ktp, no_telepon) VALUES ('"+c.getNama()+"',"
+        String sql = "INSERT INTO customer(nama, ktp, no_telepon) VALUES ('"+c.getNama()+"',"
                 + " '"+c.getKtp()+"', '"+c.getNo_telepon()+"') ";
         System.out.println("Insert data customer...");
         
@@ -42,7 +42,7 @@ public class CustomerDAO {
     public List<Customer> showCustomerBySearch(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM customer WHERE (id="+Integer.valueOf(query)+""
+        String sql = "SELECT * FROM customer WHERE (id='"+query+"'"
                 + " OR nama LIKE '%"+query+"%' OR ktp LIKE '%"+query+"%'"
                 + " OR no_telepon LIKE '%"+query+"%')";
         
