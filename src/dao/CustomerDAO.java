@@ -22,7 +22,7 @@ public class CustomerDAO {
     public void insertCustomer(Customer c){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTRO customer(nama, ktp, no_telepon) VALUES ('"+c.getNama()+"',"
+        String sql = "INSERT INTO customer(nama, ktp, no_telepon) VALUES ('"+c.getNama()+"',"
                 + " '"+c.getKtp()+"', '"+c.getNo_telepon()+"') ";
         System.out.println("Insert data customer...");
         
@@ -39,6 +39,39 @@ public class CustomerDAO {
         dbcon.closeConnection();
     }
     
+    public List<Customer> showCustomerBySearch(String query){
+        con = dbcon.makeConnection();
+        String sql = "SELECT * FROM customer WHERE (id = '"+query+"' "
+                + " OR nama LIKE '%"+query+"%' OR ktp LIKE '%"+query+"%'"
+                + " OR no_telepon LIKE '%"+query+"%')";
+
+        System.out.println("Collecting data customer...");
+
+        List<Customer> list = new ArrayList<Customer>();
+        try {
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if (rs!=null) {
+                while(rs.next()){
+                    Customer c = new Customer(rs.getInt("id"), rs.getString("nama"),
+                            rs.getString("ktp"), rs.getString("no_telepon"));
+                    list.add(c);
+                }
+            }
+            
+            System.out.println("Success collecting data customer...");
+            rs.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error collecting data customer...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        
+        return list;
+                
+    }
  public List<Customer> showListCustomer(){
         con = dbcon.makeConnection();
         
@@ -93,7 +126,7 @@ public class CustomerDAO {
     public void deleteCustomer(int id){
         con = dbcon.makeConnection();
         
-        String sql = "DELETE * FROM customer WHERE id = "+id+"";
+        String sql = "DELETE FROM customer WHERE id = "+id+"";
         
         System.out.println("Deleting data customer...");
         
