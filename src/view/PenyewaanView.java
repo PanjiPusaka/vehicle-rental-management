@@ -14,13 +14,57 @@ import table.*;
 
 public class PenyewaanView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PenyewaanView
-     */
+    private KendaraanControl kControl;
+    private CustomerControl cControl;
+    String action = null;
+    List<Customer> listCustomer;
+    List<Kendaraan> listKendaraan;
     public PenyewaanView() {
+        kControl=new KendaraanControl();
+        cControl = new CustomerControl();
         initComponents();
+        setComponents(false);
+        setEditDeleteBtn(false);
+        setKendaraanDropDown();
+    }
+    
+    public void setEditDeleteBtn(boolean value){
+        editBtn.setEnabled(value);
+        deleteBtn.setEnabled(value);
+    }
+    public void setComponents(boolean value){
+        kendaraanDropDown.setEnabled(value);
+        namaDropDown.setEnabled(value);
+        lamaSewaInput.setEnabled(value);
+        totalHargaInput.setEnabled(value);
+        snackCheckBox.setEnabled(value);
+        maskerCheckBox.setEnabled(value);
+        tissueCheckBox.setEnabled(value);
+        saveBtn.setEnabled(value);
+        cancelBtn.setEnabled(value);
+        
     }
 
+    public void clearText(){
+        kendaraanDropDown.setSelectedItem(ABORT);
+        namaDropDown.setSelectedItem(ABORT);
+        lamaSewaInput.setText("");
+        totalHargaInput.setText("");
+        snackCheckBox.setSelected(false);
+        maskerCheckBox.setSelected(false);
+        tissueCheckBox.setSelected(false);
+    }
+    
+    
+    public void setKendaraanDropDown(){
+        listKendaraan=kControl.showAllKendaraan();
+        for(int i=0;i<listKendaraan.size();i++){
+            kendaraanDropDown.addItem(listKendaraan.get(i).toString());
+        }
+    }
+    public void setNamaDropDown(){
+        listCustomer=cControl.showCustomerBySearch(action)
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,8 +108,8 @@ public class PenyewaanView extends javax.swing.JFrame {
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        kendaraanCbox = new javax.swing.JComboBox<>();
-        namaCbox = new javax.swing.JComboBox<>();
+        kendaraanDropDown = new javax.swing.JComboBox<>();
+        namaDropDown = new javax.swing.JComboBox<>();
         lamaSewaInput = new javax.swing.JTextField();
         totalHargaInput = new javax.swing.JTextField();
         kendaraanLabel = new javax.swing.JLabel();
@@ -306,7 +350,7 @@ public class PenyewaanView extends javax.swing.JFrame {
         addBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         addBtn.setForeground(new java.awt.Color(0, 0, 0));
         addBtn.setText("Tambah");
-        addBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -317,21 +361,22 @@ public class PenyewaanView extends javax.swing.JFrame {
         editBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         editBtn.setForeground(new java.awt.Color(0, 0, 0));
         editBtn.setText("Ubah");
-        editBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         deleteBtn.setBackground(new java.awt.Color(255, 91, 91));
         deleteBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
         deleteBtn.setText("Hapus");
-        deleteBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         searchBtn.setBackground(new java.awt.Color(153, 204, 255));
         searchBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         searchBtn.setForeground(new java.awt.Color(51, 51, 51));
         searchBtn.setText("Cari");
-        searchBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         searchInput.setBackground(new java.awt.Color(209, 232, 255));
+        searchInput.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         searchInput.setForeground(new java.awt.Color(51, 51, 51));
         searchInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         searchInput.setCaretColor(new java.awt.Color(153, 204, 255));
@@ -430,7 +475,7 @@ public class PenyewaanView extends javax.swing.JFrame {
         saveBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(51, 51, 51));
         saveBtn.setText("Save");
-        saveBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        saveBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
@@ -441,7 +486,7 @@ public class PenyewaanView extends javax.swing.JFrame {
         cancelBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         cancelBtn.setForeground(new java.awt.Color(0, 0, 0));
         cancelBtn.setText("Cancel");
-        cancelBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
@@ -450,11 +495,11 @@ public class PenyewaanView extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 102));
 
-        kendaraanCbox.setBackground(new java.awt.Color(255, 255, 204));
-        kendaraanCbox.setForeground(new java.awt.Color(51, 51, 51));
+        kendaraanDropDown.setBackground(new java.awt.Color(255, 255, 204));
+        kendaraanDropDown.setForeground(new java.awt.Color(51, 51, 51));
 
-        namaCbox.setBackground(new java.awt.Color(255, 255, 204));
-        namaCbox.setForeground(new java.awt.Color(51, 51, 51));
+        namaDropDown.setBackground(new java.awt.Color(255, 255, 204));
+        namaDropDown.setForeground(new java.awt.Color(51, 51, 51));
 
         lamaSewaInput.setBackground(new java.awt.Color(255, 255, 204));
         lamaSewaInput.setForeground(new java.awt.Color(51, 51, 51));
@@ -489,8 +534,8 @@ public class PenyewaanView extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namaCbox, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kendaraanCbox, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kendaraanDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(namaLabel)
                     .addComponent(kendaraanLabel))
                 .addGap(60, 60, 60)
@@ -512,14 +557,14 @@ public class PenyewaanView extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lamaSewaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kendaraanCbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kendaraanDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel)
                     .addComponent(totalHargaLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaCbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(totalHargaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
@@ -587,7 +632,8 @@ public class PenyewaanView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        setComponents(true);
+        action="Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
@@ -668,12 +714,12 @@ public class PenyewaanView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel kelompokLabel;
-    private javax.swing.JComboBox<String> kendaraanCbox;
+    private javax.swing.JComboBox<String> kendaraanDropDown;
     private javax.swing.JLabel kendaraanLabel;
     private javax.swing.JTextField lamaSewaInput;
     private javax.swing.JLabel lamaSewaLabel;
     private javax.swing.JCheckBox maskerCheckBox;
-    private javax.swing.JComboBox<String> namaCbox;
+    private javax.swing.JComboBox<String> namaDropDown;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JLabel npm1;
     private javax.swing.JLabel npm2;
