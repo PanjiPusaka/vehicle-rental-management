@@ -93,11 +93,6 @@ public class KendaraanView extends javax.swing.JFrame {
     private void initComponents() {
 
         jenisGroup = new javax.swing.ButtonGroup();
-        panelHeader = new javax.swing.JPanel();
-        labelKelompok = new javax.swing.JLabel();
-        npmRiksi = new javax.swing.JLabel();
-        npmPanji = new javax.swing.JLabel();
-        labelOP1 = new javax.swing.JLabel();
         panelContent = new javax.swing.JPanel();
         panelButton = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
@@ -121,9 +116,6 @@ public class KendaraanView extends javax.swing.JFrame {
         inputJumlah = new javax.swing.JTextField();
         labelJenis = new javax.swing.JLabel();
         inputJenis = new javax.swing.JTextField();
-        panelSaveCancel = new javax.swing.JPanel();
-        btnSave = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
         panelMobil = new javax.swing.JPanel();
         labelMobil = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -132,74 +124,76 @@ public class KendaraanView extends javax.swing.JFrame {
         labelMotor = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         areaMotor = new javax.swing.JTextArea();
-        labelRental = new javax.swing.JLabel();
+        sidebarPanel = new javax.swing.JPanel();
+        exitPanel = new javax.swing.JPanel();
+        iconShutdown = new javax.swing.JLabel();
+        identityPanel = new javax.swing.JPanel();
+        npm2 = new javax.swing.JLabel();
+        npm1 = new javax.swing.JLabel();
+        kelompokLabel = new javax.swing.JLabel();
+        viewLabel = new javax.swing.JLabel();
+        rentPanel = new javax.swing.JPanel();
+        rentLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        vehiclePanel = new javax.swing.JPanel();
+        vehicleLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        customerPanel = new javax.swing.JPanel();
+        customerLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelHeader.setBackground(new java.awt.Color(50, 50, 58));
-
-        labelKelompok.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        labelKelompok.setForeground(new java.awt.Color(255, 255, 255));
-        labelKelompok.setText("Kelompok 7");
-
-        npmRiksi.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        npmRiksi.setForeground(new java.awt.Color(255, 255, 255));
-        npmRiksi.setText("210711396");
-
-        npmPanji.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        npmPanji.setForeground(new java.awt.Color(255, 255, 255));
-        npmPanji.setText("210711397");
-
-        labelOP1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        labelOP1.setForeground(new java.awt.Color(255, 255, 255));
-        labelOP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelOP1.setText("Object Persistence 1");
-
-        panelContent.setBackground(new java.awt.Color(80, 80, 92));
+        panelContent.setBackground(new java.awt.Color(255, 204, 102));
         panelContent.setForeground(new java.awt.Color(255, 255, 255));
 
-        panelButton.setBackground(new java.awt.Color(80, 80, 92));
+        panelButton.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnAdd.setBackground(new java.awt.Color(80, 80, 96));
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Add");
+        btnAdd.setBackground(new java.awt.Color(102, 255, 102));
+        btnAdd.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
+        btnAdd.setText("Tambah");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
-        btnEdit.setBackground(new java.awt.Color(80, 80, 96));
-        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnEdit.setText("Edit");
+        btnEdit.setBackground(new java.awt.Color(255, 204, 51));
+        btnEdit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(0, 0, 0));
+        btnEdit.setText("Ubah");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(80, 80, 96));
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete");
+        btnDelete.setBackground(new java.awt.Color(255, 91, 91));
+        btnDelete.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(0, 0, 0));
+        btnDelete.setText("Hapus");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
-        inputSearch.setBackground(new java.awt.Color(80, 80, 96));
+        inputSearch.setBackground(new java.awt.Color(255, 255, 204));
         inputSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        inputSearch.setForeground(new java.awt.Color(255, 255, 255));
+        inputSearch.setForeground(new java.awt.Color(51, 51, 51));
         inputSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputSearchActionPerformed(evt);
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(80, 80, 96));
-        btnSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Search");
+        btnSearch.setBackground(new java.awt.Color(153, 204, 255));
+        btnSearch.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(0, 0, 0));
+        btnSearch.setText("Cari");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
@@ -211,72 +205,78 @@ public class KendaraanView extends javax.swing.JFrame {
         panelButtonLayout.setHorizontalGroup(
             panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelButtonLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEdit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
         panelButtonLayout.setVerticalGroup(
             panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelButtonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnEdit)
-                    .addComponent(btnDelete)
-                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        panelInput.setBackground(new java.awt.Color(80, 80, 92));
+        panelInput.setBackground(new java.awt.Color(255, 204, 102));
+        panelInput.setForeground(new java.awt.Color(51, 51, 51));
         panelInput.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        labelID.setForeground(new java.awt.Color(255, 255, 255));
+        labelID.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelID.setForeground(new java.awt.Color(51, 51, 51));
         labelID.setText("ID Kendaraan");
 
-        inputID.setBackground(new java.awt.Color(80, 80, 96));
-        inputID.setForeground(new java.awt.Color(255, 255, 255));
+        inputID.setBackground(new java.awt.Color(255, 255, 204));
+        inputID.setForeground(new java.awt.Color(51, 51, 51));
         inputID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputIDActionPerformed(evt);
             }
         });
 
-        labelMerk.setForeground(new java.awt.Color(255, 255, 255));
+        labelMerk.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelMerk.setForeground(new java.awt.Color(51, 51, 51));
         labelMerk.setText("Merk Kendaraan");
 
-        inputMerk.setBackground(new java.awt.Color(80, 80, 96));
-        inputMerk.setForeground(new java.awt.Color(255, 255, 255));
+        inputMerk.setBackground(new java.awt.Color(255, 255, 204));
+        inputMerk.setForeground(new java.awt.Color(51, 51, 51));
         inputMerk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputMerkActionPerformed(evt);
             }
         });
 
-        labelTahun.setForeground(new java.awt.Color(255, 255, 255));
+        labelTahun.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelTahun.setForeground(new java.awt.Color(51, 51, 51));
         labelTahun.setText("Tahun Pembuatan");
 
-        inputTahun.setBackground(new java.awt.Color(80, 80, 96));
-        inputTahun.setForeground(new java.awt.Color(255, 255, 255));
+        inputTahun.setBackground(new java.awt.Color(255, 255, 204));
+        inputTahun.setForeground(new java.awt.Color(51, 51, 51));
         inputTahun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputTahunActionPerformed(evt);
             }
         });
 
-        labelNo.setForeground(new java.awt.Color(255, 255, 255));
+        labelNo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelNo.setForeground(new java.awt.Color(51, 51, 51));
         labelNo.setText("Nomor Plat");
 
-        inputNo.setBackground(new java.awt.Color(80, 80, 96));
-        inputNo.setForeground(new java.awt.Color(255, 255, 255));
+        inputNo.setBackground(new java.awt.Color(255, 255, 204));
+        inputNo.setForeground(new java.awt.Color(51, 51, 51));
         inputNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputNoActionPerformed(evt);
@@ -294,8 +294,8 @@ public class KendaraanView extends javax.swing.JFrame {
                         .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(50, Short.MAX_VALUE))
                     .addComponent(inputID)
                     .addComponent(inputMerk)
@@ -326,11 +326,12 @@ public class KendaraanView extends javax.swing.JFrame {
 
         labelTahun.getAccessibleContext().setAccessibleName("");
 
-        panelJenis.setBackground(new java.awt.Color(80, 80, 92));
+        panelJenis.setBackground(new java.awt.Color(255, 204, 102));
         panelJenis.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jenisGroup.add(jenisMobil);
-        jenisMobil.setForeground(new java.awt.Color(255, 255, 255));
+        jenisMobil.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jenisMobil.setForeground(new java.awt.Color(51, 51, 51));
         jenisMobil.setText("Mobil");
         jenisMobil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,7 +340,8 @@ public class KendaraanView extends javax.swing.JFrame {
         });
 
         jenisGroup.add(jenisMotor);
-        jenisMotor.setForeground(new java.awt.Color(255, 255, 255));
+        jenisMotor.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jenisMotor.setForeground(new java.awt.Color(51, 51, 51));
         jenisMotor.setText("Motor");
         jenisMotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,22 +349,24 @@ public class KendaraanView extends javax.swing.JFrame {
             }
         });
 
-        labelJumlah.setForeground(new java.awt.Color(255, 255, 255));
+        labelJumlah.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelJumlah.setForeground(new java.awt.Color(51, 51, 51));
         labelJumlah.setText("Jumlah Penumpang");
 
-        inputJumlah.setBackground(new java.awt.Color(80, 80, 96));
-        inputJumlah.setForeground(new java.awt.Color(255, 255, 255));
+        inputJumlah.setBackground(new java.awt.Color(255, 255, 204));
+        inputJumlah.setForeground(new java.awt.Color(51, 51, 51));
         inputJumlah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputJumlahActionPerformed(evt);
             }
         });
 
-        labelJenis.setForeground(new java.awt.Color(255, 255, 255));
+        labelJenis.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelJenis.setForeground(new java.awt.Color(51, 51, 51));
         labelJenis.setText("Jenis Tak");
 
-        inputJenis.setBackground(new java.awt.Color(80, 80, 96));
-        inputJenis.setForeground(new java.awt.Color(255, 255, 255));
+        inputJenis.setBackground(new java.awt.Color(255, 255, 204));
+        inputJenis.setForeground(new java.awt.Color(51, 51, 51));
         inputJenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputJenisActionPerformed(evt);
@@ -407,57 +411,17 @@ public class KendaraanView extends javax.swing.JFrame {
         jenisMobil.getAccessibleContext().setAccessibleName("");
         jenisMotor.getAccessibleContext().setAccessibleName("");
 
-        panelSaveCancel.setBackground(new java.awt.Color(80, 80, 92));
+        panelMobil.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnSave.setBackground(new java.awt.Color(80, 80, 96));
-        btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnCancel.setBackground(new java.awt.Color(80, 80, 96));
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSaveCancelLayout = new javax.swing.GroupLayout(panelSaveCancel);
-        panelSaveCancel.setLayout(panelSaveCancelLayout);
-        panelSaveCancelLayout.setHorizontalGroup(
-            panelSaveCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSaveCancelLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-        panelSaveCancelLayout.setVerticalGroup(
-            panelSaveCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSaveCancelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelSaveCancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelMobil.setBackground(new java.awt.Color(80, 80, 92));
-
-        labelMobil.setForeground(new java.awt.Color(255, 255, 255));
+        labelMobil.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelMobil.setForeground(new java.awt.Color(51, 51, 51));
         labelMobil.setText("Data Mobil");
 
         areaMobil.setEditable(false);
-        areaMobil.setBackground(new java.awt.Color(80, 80, 96));
+        areaMobil.setBackground(new java.awt.Color(255, 255, 204));
         areaMobil.setColumns(20);
         areaMobil.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        areaMobil.setForeground(new java.awt.Color(255, 255, 255));
+        areaMobil.setForeground(new java.awt.Color(51, 51, 51));
         areaMobil.setRows(5);
         jScrollPane1.setViewportView(areaMobil);
 
@@ -468,32 +432,33 @@ public class KendaraanView extends javax.swing.JFrame {
             .addGroup(panelMobilLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelMobilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                     .addGroup(panelMobilLayout.createSequentialGroup()
                         .addComponent(labelMobil)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelMobilLayout.setVerticalGroup(
             panelMobilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMobilLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(labelMobil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        panelMotor.setBackground(new java.awt.Color(80, 80, 92));
+        panelMotor.setBackground(new java.awt.Color(255, 204, 102));
 
-        labelMotor.setForeground(new java.awt.Color(255, 255, 255));
+        labelMotor.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        labelMotor.setForeground(new java.awt.Color(51, 51, 51));
         labelMotor.setText("Data Motor");
 
         areaMotor.setEditable(false);
-        areaMotor.setBackground(new java.awt.Color(80, 80, 96));
+        areaMotor.setBackground(new java.awt.Color(255, 255, 204));
         areaMotor.setColumns(20);
         areaMotor.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        areaMotor.setForeground(new java.awt.Color(255, 255, 255));
+        areaMotor.setForeground(new java.awt.Color(51, 51, 51));
         areaMotor.setRows(5);
         jScrollPane2.setViewportView(areaMotor);
 
@@ -503,45 +468,295 @@ public class KendaraanView extends javax.swing.JFrame {
             panelMotorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMotorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelMotor)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelMotorLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addGroup(panelMotorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                    .addGroup(panelMotorLayout.createSequentialGroup()
+                        .addComponent(labelMotor)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelMotorLayout.setVerticalGroup(
             panelMotorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMotorLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(labelMotor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        sidebarPanel.setBackground(new java.awt.Color(255, 255, 204));
+
+        exitPanel.setBackground(new java.awt.Color(255, 158, 14));
+        exitPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitPanelMouseEntered(evt);
+            }
+        });
+
+        iconShutdown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-shutdown-64 (1).png"))); // NOI18N
+
+        javax.swing.GroupLayout exitPanelLayout = new javax.swing.GroupLayout(exitPanel);
+        exitPanel.setLayout(exitPanelLayout);
+        exitPanelLayout.setHorizontalGroup(
+            exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitPanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(iconShutdown)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        exitPanelLayout.setVerticalGroup(
+            exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(iconShutdown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        identityPanel.setBackground(new java.awt.Color(255, 255, 153));
+
+        npm2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        npm2.setForeground(new java.awt.Color(51, 51, 51));
+        npm2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        npm2.setText("210711397");
+
+        npm1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        npm1.setForeground(new java.awt.Color(51, 51, 51));
+        npm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        npm1.setText("210711396");
+
+        kelompokLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        kelompokLabel.setForeground(new java.awt.Color(51, 51, 51));
+        kelompokLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kelompokLabel.setText("Kelompok 7");
+
+        viewLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
+        viewLabel.setForeground(new java.awt.Color(51, 51, 51));
+        viewLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewLabel.setText("Vehicle Rental");
+
+        javax.swing.GroupLayout identityPanelLayout = new javax.swing.GroupLayout(identityPanel);
+        identityPanel.setLayout(identityPanelLayout);
+        identityPanelLayout.setHorizontalGroup(
+            identityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(identityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(identityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(identityPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(kelompokLabel))
+                    .addComponent(viewLabel)
+                    .addGroup(identityPanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(identityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(npm2)
+                            .addComponent(npm1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        identityPanelLayout.setVerticalGroup(
+            identityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(identityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(viewLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kelompokLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(npm1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(npm2)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        rentPanel.setBackground(new java.awt.Color(255, 255, 204));
+        rentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rentPanelMouseClicked(evt);
+            }
+        });
+
+        rentLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        rentLabel.setForeground(new java.awt.Color(51, 51, 51));
+        rentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rentLabel.setText("Vehicle Rental");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-rent-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout rentPanelLayout = new javax.swing.GroupLayout(rentPanel);
+        rentPanel.setLayout(rentPanelLayout);
+        rentPanelLayout.setHorizontalGroup(
+            rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rentPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        rentPanelLayout.setVerticalGroup(
+            rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rentPanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rentLabel)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        vehiclePanel.setBackground(new java.awt.Color(255, 204, 102));
+        vehiclePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vehiclePanelMouseClicked(evt);
+            }
+        });
+
+        vehicleLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        vehicleLabel.setForeground(new java.awt.Color(51, 51, 51));
+        vehicleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vehicleLabel.setText("Vehicle");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/car (3).png"))); // NOI18N
+
+        javax.swing.GroupLayout vehiclePanelLayout = new javax.swing.GroupLayout(vehiclePanel);
+        vehiclePanel.setLayout(vehiclePanelLayout);
+        vehiclePanelLayout.setHorizontalGroup(
+            vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehiclePanelLayout.createSequentialGroup()
+                .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(vehiclePanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(vehicleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(vehiclePanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        vehiclePanelLayout.setVerticalGroup(
+            vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehiclePanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehicleLabel)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        customerPanel.setBackground(new java.awt.Color(255, 255, 204));
+        customerPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerPanelMouseClicked(evt);
+            }
+        });
+
+        customerLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        customerLabel.setForeground(new java.awt.Color(51, 51, 51));
+        customerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerLabel.setText("Customer");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-customer-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
+        customerPanel.setLayout(customerPanelLayout);
+        customerPanelLayout.setHorizontalGroup(
+            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerPanelLayout.createSequentialGroup()
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        customerPanelLayout.setVerticalGroup(
+            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
+        sidebarPanel.setLayout(sidebarPanelLayout);
+        sidebarPanelLayout.setHorizontalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(exitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(identityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(vehiclePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
+                .addComponent(customerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        sidebarPanelLayout.setVerticalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelLayout.createSequentialGroup()
+                .addComponent(identityPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(customerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehiclePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(rentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        btnSave.setBackground(new java.awt.Color(0, 204, 102));
+        btnSave.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(51, 51, 51));
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setBackground(new java.awt.Color(51, 255, 255));
+        btnCancel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(51, 51, 51));
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelContentLayout = new javax.swing.GroupLayout(panelContent);
         panelContent.setLayout(panelContentLayout);
         panelContentLayout.setHorizontalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelContentLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelContentLayout.createSequentialGroup()
-                        .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sidebarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelContentLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelContentLayout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(panelJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContentLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelSaveCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76)
+                                .addComponent(panelJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelContentLayout.createSequentialGroup()
+                                .addComponent(panelMobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(panelMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(panelContentLayout.createSequentialGroup()
-                        .addComponent(panelMobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45))
+                        .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelContentLayout.createSequentialGroup()
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancel)
+                                .addGap(69, 69, 69))
+                            .addGroup(panelContentLayout.createSequentialGroup()
+                                .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62))))))
         );
         panelContentLayout.setVerticalGroup(
             panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -549,94 +764,139 @@ public class KendaraanView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelContentLayout.createSequentialGroup()
                         .addComponent(panelJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(panelSaveCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelMobil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelMotor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        labelRental.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        labelRental.setForeground(new java.awt.Color(255, 255, 255));
-        labelRental.setText("Rental Kendaraan Negara");
-
-        javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
-        panelHeader.setLayout(panelHeaderLayout);
-        panelHeaderLayout.setHorizontalGroup(
-            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelKelompok)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(npmPanji)
-                            .addComponent(npmRiksi))))
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(labelRental))
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(labelOP1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelHeaderLayout.setVerticalGroup(
-            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addComponent(labelKelompok)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(npmRiksi))
-                    .addComponent(labelOP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(npmPanji)
-                    .addComponent(labelRental))
-                .addGap(18, 18, 18)
-                .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelContentLayout.createSequentialGroup()
+                        .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 20, Short.MAX_VALUE)))
+                .addGroup(panelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelMobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addComponent(sidebarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 1031, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        setComponent(true);
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        setComponent(false);
+        inputSearch.setEnabled(true);
+        btnSearch.setEnabled(true);
         setEditDeleteBtn(false);
-        inputID.setEnabled(false);
         clearText();
         radioInput(false);
-        action = "Add";
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        try{
+            inputKosongException();
+            inputIdException();
+            jenisKendaraanException();
+            inputKosongJenisKendaranException();
+
+            Kendaraan k=null;
+
+            if(jenisMobil.isSelected()){
+                k = new Kendaraan(inputID.getText(), inputMerk.getText(),"Mobil",
+                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),Integer.parseInt(inputJumlah.getText()),null);
+                initCountMobil++;
+            }else{
+                k=new Kendaraan(inputID.getText(), inputMerk.getText(),"Motor",
+                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),0,inputJenis.getText());
+                initCountMotor++;
+            }
+
+            if(action.equals("Add")){
+                kendaraanControl.insertDataKendaraan(k);
+                JOptionPane.showMessageDialog(this, "Berhasil Tambah Data");
+            }else{
+                kendaraanControl.updateDataKendaraan(k,inputID.getText());
+                JOptionPane.showMessageDialog(this, "Berhasil Edit Data");
+            }
+            clearText();
+            setComponent(false);
+            setEditDeleteBtn(false);
+            radioInput(false);
+            showKendaraan();
+        }catch(InputKosongException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }catch(InputIdException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }catch(JenisKendaraanException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }catch(NumberFormatException e){
+            try{
+                Integer.parseInt(inputTahun.getText());
+            }catch(NumberFormatException e1){
+                JOptionPane.showMessageDialog(this, "Tahun Pembuatan harus berupa Angka");
+            }
+            if(jenisMobil.isSelected()){
+                try{
+                    Integer.parseInt(inputJumlah.getText());
+                }catch(NumberFormatException e2){
+                    JOptionPane.showMessageDialog(this, "Jumlah Penumpang harus berupa Angka");
+                }
+            }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString());
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void inputJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputJenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputJenisActionPerformed
 
     private void inputJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputJumlahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputJumlahActionPerformed
 
-    private void inputJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputJenisActionPerformed
+    private void jenisMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMotorActionPerformed
+        inputJenis.setEnabled(true);
+        inputJumlah.setEnabled(false);
+        inputJumlah.setText("");
+        if (action.equals("Add")) {
+            inputID.setText("MTR-"+String.valueOf(initCountMotor+1));
+        }
+    }//GEN-LAST:event_jenisMotorActionPerformed
+
+    private void jenisMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMobilActionPerformed
+        inputJumlah.setEnabled(true);
+        inputJenis.setEnabled(false);
+        inputJenis.setText("");
+        if (action.equals("Add")) {
+            inputID.setText("MBL-"+String.valueOf(initCountMobil+1));
+        }
+    }//GEN-LAST:event_jenisMobilActionPerformed
+
+    private void inputNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputJenisActionPerformed
+    }//GEN-LAST:event_inputNoActionPerformed
+
+    private void inputTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTahunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTahunActionPerformed
+
+    private void inputMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMerkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMerkActionPerformed
 
     private void inputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIDActionPerformed
         // TODO add your handling code here:
@@ -646,8 +906,8 @@ public class KendaraanView extends javax.swing.JFrame {
         setEditDeleteBtn(true);
         setComponent(false);
         radioInput(false);
-       try {
-           Kendaraan kendaraan = kendaraanControl.searchKendaraan(inputSearch.getText());
+        try {
+            Kendaraan kendaraan = kendaraanControl.searchKendaraan(inputSearch.getText());
             if(kendaraan == null){
                 clearText();
                 setEditDeleteBtn(false);
@@ -657,7 +917,7 @@ public class KendaraanView extends javax.swing.JFrame {
                 inputMerk.setText(kendaraan.getMerk());
                 inputTahun.setText(String.valueOf(kendaraan.getTahunPembuatan()));
                 inputNo.setText(kendaraan.getNoPlat());
-                
+
                 if (kendaraan.getJenis().equals("Motor")) {
                     inputJenis.setText(kendaraan.getJenis_tak());
                     jenisMotor.setSelected(true);
@@ -672,6 +932,83 @@ public class KendaraanView extends javax.swing.JFrame {
             System.out.println("Error "+e.getMessage());
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void inputSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSearchActionPerformed
+
+    }//GEN-LAST:event_inputSearchActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin ingin menghapus data?","Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if(getAnswer == JOptionPane.YES_OPTION){
+            try {
+                kendaraanControl.deleteDataKendaraan(inputID.getText());
+                clearText();
+                showKendaraan();
+                JOptionPane.showMessageDialog(null, "Data Berhasil dihapus!");
+                setEditDeleteBtn(false);
+                clearText();
+                setComponent(false);
+                radioInput(false);
+            } catch (Exception e) {
+                System.out.println("Error : "+e.getMessage());
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Data tidak jadi dihapus!");
+        }
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        setComponent(true);
+        inputID.setEnabled(false);
+        if (jenisMotor.isSelected()) {
+            jenisMotor.setEnabled(false);
+            inputJenis.setEnabled(true);
+            jenisMobil.setEnabled(false);
+            inputJumlah.setEnabled(false);
+        }else{
+            jenisMobil.setSelected(false);
+            inputJumlah.setEnabled(true);
+            jenisMotor.setEnabled(false);
+            inputJenis.setEnabled(false);
+        }
+        action = "Edit";
+
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        setComponent(true);
+        setEditDeleteBtn(false);
+        inputID.setEnabled(false);
+        clearText();
+        radioInput(false);
+        action = "Add";
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_exitPanelMouseClicked
+
+    private void vehiclePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vehiclePanelMouseClicked
+
+    }//GEN-LAST:event_vehiclePanelMouseClicked
+
+    private void customerPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerPanelMouseClicked
+        CustomerView cv = new CustomerView();
+        this.dispose();
+        cv.setVisible(true);
+    }//GEN-LAST:event_customerPanelMouseClicked
+
+    private void exitPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitPanelMouseEntered
+
+    private void rentPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentPanelMouseClicked
+        PenyewaanView pv = new PenyewaanView();
+        this.dispose();
+        pv.setVisible(true);
+    }//GEN-LAST:event_rentPanelMouseClicked
 
        public void inputIdException() throws InputIdException{
            if(inputID.getText().length()<5 || inputID.getText().length()>8) throw new InputIdException();
@@ -692,145 +1029,6 @@ public class KendaraanView extends javax.swing.JFrame {
                    throw new InputKosongException();
                }
        }
-    private void inputNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputNoActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        setComponent(false);
-        inputSearch.setEnabled(true);
-        btnSearch.setEnabled(true);
-        setEditDeleteBtn(false);
-        clearText();
-        radioInput(false);
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       setComponent(true);
-       inputID.setEnabled(false);
-       if (jenisMotor.isSelected()) {
-           jenisMotor.setEnabled(false);
-           inputJenis.setEnabled(true);
-            jenisMobil.setEnabled(false);
-            inputJumlah.setEnabled(false);
-        }else{
-           jenisMobil.setSelected(false);
-           inputJumlah.setEnabled(true);
-            jenisMotor.setEnabled(false);
-            inputJenis.setEnabled(false);
-        }
-        action = "Edit";
-        
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-       int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin ingin menghapus data?","Konfirmasi", JOptionPane.YES_NO_OPTION);
-       if(getAnswer == JOptionPane.YES_OPTION){
-            try {
-                 kendaraanControl.deleteDataKendaraan(inputID.getText());
-                  clearText();
-                  showKendaraan();
-                JOptionPane.showMessageDialog(null, "Data Berhasil dihapus!");
-                setEditDeleteBtn(false);
-                clearText();
-                setComponent(false);
-                radioInput(false);
-            } catch (Exception e) {
-                System.out.println("Error : "+e.getMessage());
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Data tidak jadi dihapus!");
-        }
-       
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void inputSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSearchActionPerformed
-        
-    }//GEN-LAST:event_inputSearchActionPerformed
-
-    private void jenisMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMobilActionPerformed
-        inputJumlah.setEnabled(true);
-        inputJenis.setEnabled(false);
-        inputJenis.setText("");
-        if (action.equals("Add")) {
-            inputID.setText("MBL-"+String.valueOf(initCountMobil+1));
-        }
-    }//GEN-LAST:event_jenisMobilActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-       try{
-           inputKosongException();
-           inputIdException();
-           jenisKendaraanException();
-           inputKosongJenisKendaranException();
-          
-           Kendaraan k=null;
-
-                if(jenisMobil.isSelected()){
-                     k = new Kendaraan(inputID.getText(), inputMerk.getText(),"Mobil",
-                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),Integer.parseInt(inputJumlah.getText()),null);
-                     initCountMobil++;
-                }else{
-                     k=new Kendaraan(inputID.getText(), inputMerk.getText(),"Motor",
-                    Integer.parseInt(inputTahun.getText()),inputNo.getText(),0,inputJenis.getText());
-                     initCountMotor++;
-                }
-                
-                if(action.equals("Add")){
-                    kendaraanControl.insertDataKendaraan(k);
-                    JOptionPane.showMessageDialog(this, "Berhasil Tambah Data");
-                }else{
-                    kendaraanControl.updateDataKendaraan(k,inputID.getText());
-                    JOptionPane.showMessageDialog(this, "Berhasil Edit Data");
-                }
-                clearText();
-                setComponent(false);
-                setEditDeleteBtn(false);
-                radioInput(false);
-                showKendaraan();
-            }catch(InputKosongException e){
-                JOptionPane.showMessageDialog(this, e.message());
-            }catch(InputIdException e){
-                JOptionPane.showMessageDialog(this, e.message());
-            }catch(JenisKendaraanException e){
-                JOptionPane.showMessageDialog(this, e.message());
-            }catch(NumberFormatException e){
-                    try{
-                        Integer.parseInt(inputTahun.getText());
-                    }catch(NumberFormatException e1){
-                        JOptionPane.showMessageDialog(this, "Tahun Pembuatan harus berupa Angka");
-                    }
-                    if(jenisMobil.isSelected()){
-                        try{
-                            Integer.parseInt(inputJumlah.getText());
-                        }catch(NumberFormatException e2){
-                            JOptionPane.showMessageDialog(this, "Jumlah Penumpang harus berupa Angka");
-                        }
-                    }
-                    
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.toString());
-            }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void jenisMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisMotorActionPerformed
-        inputJenis.setEnabled(true);
-        inputJumlah.setEnabled(false);
-        inputJumlah.setText("");
-        if (action.equals("Add")) {
-            inputID.setText("MTR-"+String.valueOf(initCountMotor+1));
-        }
-    }//GEN-LAST:event_jenisMotorActionPerformed
-
-    private void inputMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMerkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputMerkActionPerformed
-
-    private void inputTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTahunActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputTahunActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -876,6 +1074,11 @@ public class KendaraanView extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JLabel customerLabel;
+    private javax.swing.JPanel customerPanel;
+    private javax.swing.JPanel exitPanel;
+    private javax.swing.JLabel iconShutdown;
+    private javax.swing.JPanel identityPanel;
     private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputJenis;
     private javax.swing.JTextField inputJumlah;
@@ -883,31 +1086,36 @@ public class KendaraanView extends javax.swing.JFrame {
     private javax.swing.JTextField inputNo;
     private javax.swing.JTextField inputSearch;
     private javax.swing.JTextField inputTahun;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.ButtonGroup jenisGroup;
     private javax.swing.JRadioButton jenisMobil;
     private javax.swing.JRadioButton jenisMotor;
+    private javax.swing.JLabel kelompokLabel;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelJenis;
     private javax.swing.JLabel labelJumlah;
-    private javax.swing.JLabel labelKelompok;
     private javax.swing.JLabel labelMerk;
     private javax.swing.JLabel labelMobil;
     private javax.swing.JLabel labelMotor;
     private javax.swing.JLabel labelNo;
-    private javax.swing.JLabel labelOP1;
-    private javax.swing.JLabel labelRental;
     private javax.swing.JLabel labelTahun;
-    private javax.swing.JLabel npmPanji;
-    private javax.swing.JLabel npmRiksi;
+    private javax.swing.JLabel npm1;
+    private javax.swing.JLabel npm2;
     private javax.swing.JPanel panelButton;
     private javax.swing.JPanel panelContent;
-    private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelInput;
     private javax.swing.JPanel panelJenis;
     private javax.swing.JPanel panelMobil;
     private javax.swing.JPanel panelMotor;
-    private javax.swing.JPanel panelSaveCancel;
+    private javax.swing.JLabel rentLabel;
+    private javax.swing.JPanel rentPanel;
+    private javax.swing.JPanel sidebarPanel;
+    private javax.swing.JLabel vehicleLabel;
+    private javax.swing.JPanel vehiclePanel;
+    private javax.swing.JLabel viewLabel;
     // End of variables declaration//GEN-END:variables
 }
