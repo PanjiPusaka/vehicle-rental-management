@@ -14,21 +14,8 @@ import table.TableCustomer;
 public class CustomerControl {
     private CustomerDAO cDao = new CustomerDAO();
     
-    public void insertCustomer(Customer c){
-        cDao.updateCustomer(c);
-    }
-    
-    public void deleteCustomer(int id){
-        cDao.deleteCustomer(id);
-    }
-    
-    public void updateCustomer(Customer c){
-        cDao.updateCustomer(c);
-    }
-    
-    public List<Customer> showCustomerBySearch(String query){
-        List<Customer> list = cDao.showCustomerBySearch(query);
-        TableCustomer tableCustomer =  new TableCustomer(list);
+    public List<Customer> showCustomer(){
+        List<Customer> list = cDao.showListCustomer();
         
         return list;
     }

@@ -39,12 +39,10 @@ public class CustomerDAO {
         dbcon.closeConnection();
     }
     
-    public List<Customer> showCustomerBySearch(String query){
+ public List<Customer> showListCustomer(){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM customer WHERE (id="+Integer.valueOf(query)+""
-                + " OR nama LIKE '%"+query+"%' OR ktp LIKE '%"+query+"%'"
-                + " OR no_telepon LIKE '%"+query+"%')";
+        String sql = "SELECT * FROM customer";
         
         System.out.println("Collecting data customer...");
         List<Customer> list = new ArrayList<Customer>();
