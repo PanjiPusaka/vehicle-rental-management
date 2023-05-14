@@ -767,8 +767,7 @@ public class PenyewaanView extends javax.swing.JFrame {
     }//GEN-LAST:event_vehiclePanelMouseClicked
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        setEditDeleteBtn(true);
-        setComponents(false);
+setComponents(false);
         try{
             TablePenyewaan penyewaan = pControl.showPenyewaan(searchInput.getText());
             if(penyewaan.getRowCount()==0){

@@ -9,7 +9,6 @@ package control;
 import dao.CustomerDAO;
 import java.util.List;
 import model.Customer;
-import table.TableCustomer;
 
 public class CustomerControl {
     private CustomerDAO cDao = new CustomerDAO();
