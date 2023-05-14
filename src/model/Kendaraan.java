@@ -27,7 +27,7 @@ public class Kendaraan {
         this.noPlat = noPlat;
         if(jenis.equalsIgnoreCase("Mobil")){
             this.jumlah_penumpang = jumlah_penumpang;
-            this.jenis_tak = "";
+            this.jenis_tak = "-";
         }else{ 
             this.jenis_tak = jenis_tak;
             this.jumlah_penumpang = 0;

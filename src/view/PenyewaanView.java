@@ -16,16 +16,21 @@ public class PenyewaanView extends javax.swing.JFrame {
 
     private KendaraanControl kControl;
     private CustomerControl cControl;
+    private PenyewaanControl pControl;
+    int selectedId = 0;
     String action = null;
     List<Customer> listCustomer;
     List<Kendaraan> listKendaraan;
     public PenyewaanView() {
         kControl=new KendaraanControl();
-        cControl = new CustomerControl();
+        cControl=new CustomerControl();
+        pControl=new PenyewaanControl();
         initComponents();
         setComponents(false);
         setEditDeleteBtn(false);
         setKendaraanDropDown();
+        setNamaDropDown();
+        showPenyewaan();
     }
     
     public void setEditDeleteBtn(boolean value){
@@ -35,11 +40,14 @@ public class PenyewaanView extends javax.swing.JFrame {
     public void setComponents(boolean value){
         kendaraanDropDown.setEnabled(value);
         namaDropDown.setEnabled(value);
+        
         lamaSewaInput.setEnabled(value);
         totalHargaInput.setEnabled(value);
+        
         snackCheckBox.setEnabled(value);
         maskerCheckBox.setEnabled(value);
         tissueCheckBox.setEnabled(value);
+        
         saveBtn.setEnabled(value);
         cancelBtn.setEnabled(value);
         
@@ -59,11 +67,23 @@ public class PenyewaanView extends javax.swing.JFrame {
     public void setKendaraanDropDown(){
         listKendaraan=kControl.showAllKendaraan();
         for(int i=0;i<listKendaraan.size();i++){
-            kendaraanDropDown.addItem(listKendaraan.get(i).toString());
+            kendaraanDropDown.addItem(listKendaraan.get(i));
         }
     }
     public void setNamaDropDown(){
-        listCustomer=cControl.showCustomerBySearch(action)
+        listCustomer=cControl.showCustomer();
+        for(int i=0;i<listCustomer.size();i++){
+            namaDropDown.addItem(listCustomer.get(i));
+        }
+    }
+    public void showPenyewaan(){
+        penyewaanTable.setModel(pControl.showPenyewaan(""));
+    }
+    public void InputKosongException() throws InputKosongException{
+        if (lamaSewaInput.getText().isEmpty() || totalHargaInput.getText().isEmpty() || 
+                kendaraanDropDown.getSelectedIndex() == -1 || namaDropDown.getSelectedIndex() == -1) {
+            throw new InputKosongException();
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,21 +97,21 @@ public class PenyewaanView extends javax.swing.JFrame {
         backgroundPanel = new javax.swing.JPanel();
         sidebarPanel = new javax.swing.JPanel();
         exitPanel = new javax.swing.JPanel();
-        shutdownBtn = new javax.swing.JLabel();
+        iconShutdown = new javax.swing.JLabel();
         identityPanel = new javax.swing.JPanel();
         npm2 = new javax.swing.JLabel();
         npm1 = new javax.swing.JLabel();
         kelompokLabel = new javax.swing.JLabel();
         viewLabel = new javax.swing.JLabel();
         rentPanel = new javax.swing.JPanel();
-        rentIcon = new javax.swing.JLabel();
         rentLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         vehiclePanel = new javax.swing.JPanel();
-        vehicleIcon = new javax.swing.JLabel();
         vehicleLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         customerPanel = new javax.swing.JPanel();
-        customerIcon = new javax.swing.JLabel();
         customerLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         penyewaanTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -124,23 +144,28 @@ public class PenyewaanView extends javax.swing.JFrame {
         sidebarPanel.setBackground(new java.awt.Color(255, 255, 204));
 
         exitPanel.setBackground(new java.awt.Color(255, 158, 14));
+        exitPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitPanelMouseClicked(evt);
+            }
+        });
 
-        shutdownBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-shutdown-64.png"))); // NOI18N
+        iconShutdown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-shutdown-64 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout exitPanelLayout = new javax.swing.GroupLayout(exitPanel);
         exitPanel.setLayout(exitPanelLayout);
         exitPanelLayout.setHorizontalGroup(
             exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(exitPanelLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(shutdownBtn)
+                .addGap(62, 62, 62)
+                .addComponent(iconShutdown)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         exitPanelLayout.setVerticalGroup(
             exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(shutdownBtn)
+            .addGroup(exitPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(iconShutdown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -200,32 +225,30 @@ public class PenyewaanView extends javax.swing.JFrame {
 
         rentPanel.setBackground(new java.awt.Color(255, 204, 102));
 
-        rentIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-rent-64.png"))); // NOI18N
-
         rentLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         rentLabel.setForeground(new java.awt.Color(51, 51, 51));
         rentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rentLabel.setText("Vehicle Rental");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-rent-64.png"))); // NOI18N
 
         javax.swing.GroupLayout rentPanelLayout = new javax.swing.GroupLayout(rentPanel);
         rentPanel.setLayout(rentPanelLayout);
         rentPanelLayout.setHorizontalGroup(
             rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rentPanelLayout.createSequentialGroup()
-                .addGroup(rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rentPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(rentIcon))
-                    .addGroup(rentPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(rentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         rentPanelLayout.setVerticalGroup(
             rentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rentPanelLayout.createSequentialGroup()
-                .addComponent(rentIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rentLabel)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -237,12 +260,12 @@ public class PenyewaanView extends javax.swing.JFrame {
             }
         });
 
-        vehicleIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-car-100.png"))); // NOI18N
-
         vehicleLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         vehicleLabel.setForeground(new java.awt.Color(51, 51, 51));
         vehicleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vehicleLabel.setText("Vehicle");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/car (3).png"))); // NOI18N
 
         javax.swing.GroupLayout vehiclePanelLayout = new javax.swing.GroupLayout(vehiclePanel);
         vehiclePanel.setLayout(vehiclePanelLayout);
@@ -251,17 +274,18 @@ public class PenyewaanView extends javax.swing.JFrame {
             .addGroup(vehiclePanelLayout.createSequentialGroup()
                 .addGroup(vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(vehiclePanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(vehicleIcon))
+                        .addGap(43, 43, 43)
+                        .addComponent(vehicleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(vehiclePanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(vehicleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         vehiclePanelLayout.setVerticalGroup(
             vehiclePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vehiclePanelLayout.createSequentialGroup()
-                .addComponent(vehicleIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vehicleLabel)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -269,13 +293,12 @@ public class PenyewaanView extends javax.swing.JFrame {
 
         customerPanel.setBackground(new java.awt.Color(255, 255, 204));
 
-        customerIcon.setBackground(new java.awt.Color(102, 51, 0));
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-customer-64.png"))); // NOI18N
-
         customerLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         customerLabel.setForeground(new java.awt.Color(51, 51, 51));
         customerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerLabel.setText("Customer");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-customer-64.png"))); // NOI18N
 
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
@@ -284,18 +307,18 @@ public class PenyewaanView extends javax.swing.JFrame {
             .addGroup(customerPanelLayout.createSequentialGroup()
                 .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(customerIcon))
-                    .addGroup(customerPanelLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         customerPanelLayout.setVerticalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(customerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -328,9 +351,9 @@ public class PenyewaanView extends javax.swing.JFrame {
         );
 
         penyewaanTable.setBackground(new java.awt.Color(255, 255, 204));
-        penyewaanTable.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        penyewaanTable.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        penyewaanTable.setForeground(new java.awt.Color(255, 255, 204));
+        penyewaanTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        penyewaanTable.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        penyewaanTable.setForeground(new java.awt.Color(0, 0, 0));
         penyewaanTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -342,15 +365,25 @@ public class PenyewaanView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        penyewaanTable.setAlignmentX(0.9F);
+        penyewaanTable.setAlignmentY(0.9F);
+        penyewaanTable.setRowHeight(30);
+        penyewaanTable.setRowMargin(1);
+        penyewaanTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                penyewaanTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(penyewaanTable);
 
         jPanel1.setBackground(new java.awt.Color(255, 210, 122));
 
-        addBtn.setBackground(new java.awt.Color(153, 255, 204));
+        addBtn.setBackground(new java.awt.Color(102, 255, 102));
         addBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         addBtn.setForeground(new java.awt.Color(0, 0, 0));
         addBtn.setText("Tambah");
-        addBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addBtn.setBorder(null);
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -361,25 +394,39 @@ public class PenyewaanView extends javax.swing.JFrame {
         editBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         editBtn.setForeground(new java.awt.Color(0, 0, 0));
         editBtn.setText("Ubah");
-        editBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        editBtn.setBorder(null);
+        editBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setBackground(new java.awt.Color(255, 91, 91));
         deleteBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
         deleteBtn.setText("Hapus");
-        deleteBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        deleteBtn.setBorder(null);
+        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         searchBtn.setBackground(new java.awt.Color(153, 204, 255));
         searchBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         searchBtn.setForeground(new java.awt.Color(51, 51, 51));
         searchBtn.setText("Cari");
-        searchBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        searchBtn.setBorder(null);
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
-        searchInput.setBackground(new java.awt.Color(209, 232, 255));
-        searchInput.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        searchInput.setForeground(new java.awt.Color(51, 51, 51));
-        searchInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-        searchInput.setCaretColor(new java.awt.Color(153, 204, 255));
+        searchInput.setBackground(new java.awt.Color(255, 255, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -392,8 +439,8 @@ public class PenyewaanView extends javax.swing.JFrame {
                 .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -406,9 +453,9 @@ public class PenyewaanView extends javax.swing.JFrame {
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
@@ -446,47 +493,53 @@ public class PenyewaanView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(fasilitasLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(fasilitasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(snackCheckBox)
-                            .addComponent(tissueCheckBox)
-                            .addComponent(maskerCheckBox))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(snackCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(8, 8, 8))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tissueCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6))
+                            .addComponent(maskerCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(92, 92, 92))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fasilitasLabel)
+                .addComponent(fasilitasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(snackCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(snackCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(maskerCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(maskerCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tissueCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tissueCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         saveBtn.setBackground(new java.awt.Color(0, 204, 102));
         saveBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(51, 51, 51));
         saveBtn.setText("Save");
-        saveBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        saveBtn.setBorder(null);
+        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
             }
         });
 
-        cancelBtn.setBackground(new java.awt.Color(153, 153, 153));
+        cancelBtn.setBackground(new java.awt.Color(51, 255, 255));
         cancelBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         cancelBtn.setForeground(new java.awt.Color(0, 0, 0));
         cancelBtn.setText("Cancel");
-        cancelBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cancelBtn.setBorder(null);
+        cancelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
@@ -497,6 +550,11 @@ public class PenyewaanView extends javax.swing.JFrame {
 
         kendaraanDropDown.setBackground(new java.awt.Color(255, 255, 204));
         kendaraanDropDown.setForeground(new java.awt.Color(51, 51, 51));
+        kendaraanDropDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kendaraanDropDownActionPerformed(evt);
+            }
+        });
 
         namaDropDown.setBackground(new java.awt.Color(255, 255, 204));
         namaDropDown.setForeground(new java.awt.Color(51, 51, 51));
@@ -511,6 +569,11 @@ public class PenyewaanView extends javax.swing.JFrame {
 
         totalHargaInput.setBackground(new java.awt.Color(255, 255, 204));
         totalHargaInput.setForeground(new java.awt.Color(51, 51, 51));
+        totalHargaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalHargaInputActionPerformed(evt);
+            }
+        });
 
         kendaraanLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         kendaraanLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -545,7 +608,7 @@ public class PenyewaanView extends javax.swing.JFrame {
                         .addComponent(lamaSewaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                         .addComponent(totalHargaInput))
                     .addComponent(totalHargaLabel))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,14 +621,14 @@ public class PenyewaanView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lamaSewaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kendaraanDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(64, 64, 64)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaLabel)
-                    .addComponent(totalHargaLabel))
+                    .addComponent(namaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(totalHargaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalHargaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(namaDropDown)
+                    .addComponent(totalHargaInput))
                 .addGap(35, 35, 35))
         );
 
@@ -586,15 +649,15 @@ public class PenyewaanView extends javax.swing.JFrame {
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
+                                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                        .addGap(72, 72, 72)
                                         .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(38, 38, 38)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(18, 18, 18))))
         );
         backgroundPanelLayout.setVerticalGroup(
@@ -607,7 +670,7 @@ public class PenyewaanView extends javax.swing.JFrame {
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -634,14 +697,55 @@ public class PenyewaanView extends javax.swing.JFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         setComponents(true);
         action="Tambah";
+        searchInput.setText("");
+        clearText();
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        // TODO add your handling code here:
+        clearText();
+        setComponents(false);
+        setEditDeleteBtn(false);
+        showPenyewaan();
+        searchInput.setText("");
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            InputKosongException();
+            
+            String fasilitas;
+            int selectedKendaraan = kendaraanDropDown.getSelectedIndex();
+            int selectedCustomer = namaDropDown.getSelectedIndex();
+            
+            Kendaraan kendaraan = listKendaraan.get(selectedKendaraan);
+            Customer customer = listCustomer.get(selectedCustomer);
+            
+            if (snackCheckBox.isSelected()) fasilitas = "Snack, ";
+            else fasilitas = "-, ";
+            
+            if (maskerCheckBox.isSelected()) fasilitas = fasilitas.concat("Masker, ");
+            else fasilitas = fasilitas.concat("-, ");
+            
+            if (tissueCheckBox.isSelected()) fasilitas = fasilitas.concat("Tissue");
+            else fasilitas = fasilitas.concat("-");
+            Penyewaan p = null;
+            
+            if (action == "Tambah") {
+                p = new Penyewaan(lamaSewaInput.getText(), Float.parseFloat(totalHargaInput.getText()), fasilitas, kendaraan, customer);
+                pControl.insertPenyewaan(p);
+            }else if(action == "Edit"){
+                p = new Penyewaan(selectedId, lamaSewaInput.getText(), Float.parseFloat(totalHargaInput.getText()), fasilitas, kendaraan, customer);
+                pControl.updatePenyewaan(p);
+            }
+            clearText();
+            showPenyewaan();
+            setComponents(false);
+            setEditDeleteBtn(false);
+        } catch (InputKosongException e) {
+            JOptionPane.showMessageDialog(this, e.message());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Inputan Total Harga Harus Angka");
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void snackCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snackCheckBoxActionPerformed
@@ -661,6 +765,109 @@ public class PenyewaanView extends javax.swing.JFrame {
        this.dispose();
        kv.setVisible(true);
     }//GEN-LAST:event_vehiclePanelMouseClicked
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        setEditDeleteBtn(true);
+        setComponents(false);
+        try{
+            TablePenyewaan penyewaan = pControl.showPenyewaan(searchInput.getText());
+            if(penyewaan.getRowCount()==0){
+                clearText();
+                setEditDeleteBtn(false);
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan","Konfirmasi", JOptionPane.DEFAULT_OPTION);
+                searchInput.setText("");
+            }else{
+                penyewaanTable.setModel(penyewaan);
+            }
+            clearText();
+        }catch(Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void kendaraanDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kendaraanDropDownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kendaraanDropDownActionPerformed
+
+    private void totalHargaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalHargaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalHargaInputActionPerformed
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        setComponents(true);
+        action="Edit";
+        searchInput.setText("");
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        searchInput.setText("");
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,
+                "Apakah yakin ingin menghapus data?", "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
+        switch (getAnswer) {
+            case 0:
+                try {
+                    pControl.deletePenyewaan(selectedId);
+                    clearText();
+                    showPenyewaan();
+                    setComponents(false);
+                    setEditDeleteBtn(false);
+                    JOptionPane.showMessageDialog(null, " Data berhasil dihapus!");
+                } catch (Exception e) {
+                    System.out.println("Eror : " + e.getMessage());
+                }
+                break;
+            case 1:
+                //jika jawaban user adalah No
+                break;  
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void penyewaanTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_penyewaanTableMouseClicked
+        int indexKendaraan = -1;
+        int indexCustomer = -1;
+        setEditDeleteBtn(true);
+        setComponents(false);
+        cancelBtn.setEnabled(true);
+        int clickedRow = penyewaanTable.getSelectedRow();
+        TableModel tableModel = penyewaanTable.getModel();
+        
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow,8).toString());
+        
+        String merkKendaraan = tableModel.getValueAt(clickedRow,9).toString();
+        for (Kendaraan kendaraan : listKendaraan) {
+            if (kendaraan.getMerk().equals(merkKendaraan)) {
+                indexKendaraan = listKendaraan.indexOf(kendaraan);
+            }
+        }
+        kendaraanDropDown.setSelectedIndex(indexKendaraan);
+        
+        String namaCustomer = tableModel.getValueAt(clickedRow,10).toString();
+        for (Customer customer: listCustomer) {
+            if (customer.getNama().equals(namaCustomer)) {
+                indexCustomer = listCustomer.indexOf(customer);
+            }
+        }
+        namaDropDown.setSelectedIndex(indexCustomer);
+        
+        lamaSewaInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
+        totalHargaInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        
+        String fasilitasCheckBox = tableModel.getValueAt(clickedRow, 5).toString();
+        if (fasilitasCheckBox.contains("Snack")) snackCheckBox.setSelected(true);
+        else snackCheckBox.setSelected(false);
+        
+        if (fasilitasCheckBox.contains("Masker")) maskerCheckBox.setSelected(true);
+        else maskerCheckBox.setSelected(false);
+        
+        if (fasilitasCheckBox.contains("Tissue")) tissueCheckBox.setSelected(true);
+        else tissueCheckBox.setSelected(false);
+        
+    }//GEN-LAST:event_penyewaanTableMouseClicked
+
+    private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_exitPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -701,42 +908,42 @@ public class PenyewaanView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JButton cancelBtn;
-    private javax.swing.JLabel customerIcon;
     private javax.swing.JLabel customerLabel;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JPanel exitPanel;
     private javax.swing.JLabel fasilitasLabel;
+    private javax.swing.JLabel iconShutdown;
     private javax.swing.JPanel identityPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel kelompokLabel;
-    private javax.swing.JComboBox<String> kendaraanDropDown;
+    private javax.swing.JComboBox<Kendaraan> kendaraanDropDown;
     private javax.swing.JLabel kendaraanLabel;
     private javax.swing.JTextField lamaSewaInput;
     private javax.swing.JLabel lamaSewaLabel;
     private javax.swing.JCheckBox maskerCheckBox;
-    private javax.swing.JComboBox<String> namaDropDown;
+    private javax.swing.JComboBox<Customer> namaDropDown;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JLabel npm1;
     private javax.swing.JLabel npm2;
     private javax.swing.JTable penyewaanTable;
-    private javax.swing.JLabel rentIcon;
     private javax.swing.JLabel rentLabel;
     private javax.swing.JPanel rentPanel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
-    private javax.swing.JLabel shutdownBtn;
     private javax.swing.JPanel sidebarPanel;
     private javax.swing.JCheckBox snackCheckBox;
     private javax.swing.JCheckBox tissueCheckBox;
     private javax.swing.JTextField totalHargaInput;
     private javax.swing.JLabel totalHargaLabel;
-    private javax.swing.JLabel vehicleIcon;
     private javax.swing.JLabel vehicleLabel;
     private javax.swing.JPanel vehiclePanel;
     private javax.swing.JLabel viewLabel;

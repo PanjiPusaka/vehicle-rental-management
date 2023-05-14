@@ -23,6 +23,7 @@ public class TablePenyewaan extends AbstractTableModel{
         return list.size();
     }
     
+    @Override
     public int getColumnCount(){
         return 8;
     }
@@ -49,9 +50,9 @@ public class TablePenyewaan extends AbstractTableModel{
             case 8:
                 return list.get(rowIndex).getId();
             case 9:
-                return list.get(rowIndex).getKendaraan().getId();
+                return list.get(rowIndex).getKendaraan().getMerk();
             case 10:
-                return list.get(rowIndex).getCustomer().getId();
+                return list.get(rowIndex).getCustomer().getNama();
             default:
                 return null;
         }

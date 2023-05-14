@@ -13,11 +13,9 @@ import table.TableCustomer;
 
 public class CustomerControl {
     private CustomerDAO cDao = new CustomerDAO();
-
     
-    public List<Customer> showCustomerBySearch(String query){
-        List<Customer> list = cDao.showCustomerBySearch(query);
-        TableCustomer tableCustomer =  new TableCustomer(list);
+    public List<Customer> showCustomer(){
+        List<Customer> list = cDao.showListCustomer();
         
         return list;
     }
