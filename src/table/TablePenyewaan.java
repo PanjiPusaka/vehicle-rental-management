@@ -71,7 +71,7 @@ public class TablePenyewaan extends AbstractTableModel{
             case 4 :
                 return "Total Harga";
             case 5 :
-                return "Fasilitsa";
+                return "Fasilitas";
             case 6 :
                 return "Jumlah Penumpang";
             case 7 :
