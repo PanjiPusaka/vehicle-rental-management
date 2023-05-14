@@ -29,7 +29,6 @@ public class PenyewaanControl {
     public TablePenyewaan showPenyewaan(String query){
         List<Penyewaan> list = pDao.showPenyewaan(query);
         TablePenyewaan tablePenyewaan = new TablePenyewaan(list);
-        
         return tablePenyewaan;
     }
 }

@@ -47,8 +47,8 @@ public class PenyewaanDAO {
         String sql = "SELECT p.*, c.*, k.* FROM penyewaan as p JOIN customer as c ON (p.id_customer = c.id)"
                 + " JOIN kendaraan as k ON (p.id_kendaraan = k.id) WHERE "
                 + " (k.merk LIKE '%"+query+"%' OR k.jenis LIKE '%"+query+"%' OR c.nama LIKE '%"+query+"%'"
-                + " OR p.lama_sewa LIKE '%"+query+"%' OR p.total_harga = "+Float.valueOf(query)+""
-                + " OR p.fasilitas LIKE '%"+query+"%' OR k.jumlah_penumpang= "+Integer.valueOf(query)+""
+                + " OR p.lama_sewa LIKE '%"+query+"%' OR p.total_harga = '"+query+"'"
+                + " OR p.fasilitas LIKE '%"+query+"%' OR k.jumlah_penumpang = '"+query+"'"
                 + " OR k.jenis_tak LIKE '%"+query+"%')";
         
         List<Penyewaan> list = new ArrayList<Penyewaan>();
@@ -111,7 +111,7 @@ public class PenyewaanDAO {
     public void deletePenyewaan(int id){
         con = dbcon.makeConnection();
         
-        String sql = "DELETE FROM penyewaan WHERE id = "+id+" ";
+        String sql = "DELETE FROM penyewaan WHERE id = '"+id+"' ";
         
         System.out.println("Deleting penyewaan...");
         

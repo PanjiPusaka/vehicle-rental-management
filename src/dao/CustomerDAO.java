@@ -41,10 +41,41 @@ public class CustomerDAO {
     
     public List<Customer> showCustomerBySearch(String query){
         con = dbcon.makeConnection();
-        
         String sql = "SELECT * FROM customer WHERE (id = '"+query+"' "
                 + " OR nama LIKE '%"+query+"%' OR ktp LIKE '%"+query+"%'"
                 + " OR no_telepon LIKE '%"+query+"%')";
+
+        System.out.println("Collecting data customer...");
+
+        List<Customer> list = new ArrayList<Customer>();
+        try {
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if (rs!=null) {
+                while(rs.next()){
+                    Customer c = new Customer(rs.getInt("id"), rs.getString("nama"),
+                            rs.getString("ktp"), rs.getString("no_telepon"));
+                    list.add(c);
+                }
+            }
+            
+            System.out.println("Success collecting data customer...");
+            rs.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error collecting data customer...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        
+        return list;
+                
+    }
+ public List<Customer> showListCustomer(){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM customer";
         
         System.out.println("Collecting data customer...");
         List<Customer> list = new ArrayList<Customer>();

@@ -9,7 +9,7 @@ package control;
 import dao.CustomerDAO;
 import java.util.List;
 import model.Customer;
-import table.TableCustomer;
+import table.*;
 
 public class CustomerControl {
     private CustomerDAO cDao = new CustomerDAO();
@@ -31,5 +31,9 @@ public class CustomerControl {
         TableCustomer tableCustomer =  new TableCustomer(list);
         
         return tableCustomer;
+    }
+    public List<Customer> showCustomer(){
+        List<Customer> list = cDao.showListCustomer();
+        return list;
     }
 }
